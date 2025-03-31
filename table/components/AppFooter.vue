@@ -5,8 +5,8 @@ const footer = computed(() => {
   const currentPage = route.path;
   if (currentPage === '/') {
     return 'sec_third';
-  } else if (currentPage === '/login') {
-    return 'login_back';
+  } else if (currentPage === '/login' || currentPage === '/register') {
+    return 'sec_third';
   } else {
     return ''; // Или какое-то значение по умолчанию
   }
