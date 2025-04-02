@@ -3,7 +3,7 @@
     <div class="div_info">
         <h1 class="sec_title">Tabi Games</h1>
         <p class="sec_info">Это онлайн-платформа, которая помогает любителям настольных игр находить друг друга и играть вместе.</p>
-        <button class="btn_join"><NuxtLink to="/login"><a>Присоединиться</a></NuxtLink></button> 
+        <button class="btn_join"><NuxtLink to="/login" class="link">Присоединиться</NuxtLink></button> 
     </div>
     </section>
 </template>
@@ -47,6 +47,9 @@
     border-radius: 15%;
     cursor: pointer;
     font-size: 20px;
+}
+.link{
+    text-decoration: none;
 }
 /* .sec_second{
     color: black;
