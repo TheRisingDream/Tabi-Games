@@ -39,7 +39,7 @@
     margin: 0px;
 }
 .sec_second {
-    background: url("../public/second_back.jpg");
+    background: url("../../public/second_back.jpg");
     background-position: center;
     background-size: cover;
     background-attachment: fixed;

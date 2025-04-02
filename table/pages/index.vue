@@ -1,16 +1,15 @@
-
 <template>
     <section>
-        <SectionFirst /> 
+        <IndexPageSectionFirst /> 
     </section>
-    <ClientOnly>
+    <!-- <ClientOnly> -->
     <section>
-        <SectionSecond />
+        <IndexPageSectionSecond />
     </section>
     <section>
-        <SectionThird />
+        <IndexPageSectionThird />
     </section>
-    </ClientOnly>
+    <!-- </ClientOnly> -->
 </template>
 <style scoped>
 </style>

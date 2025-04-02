@@ -12,7 +12,7 @@
     color: #fff;
 }
 .sec_first{
-    background: url("../public/first_back.jpg");
+    background: url("../../public/first_back.jpg");
     background-position: center;
     background-size: cover;
     background-attachment: fixed;

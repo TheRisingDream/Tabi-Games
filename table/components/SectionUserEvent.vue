@@ -1,6 +1,6 @@
 <template>
-<section class="sec_third">
-    <h1 class="sec_title">"Рыцари и Стратеги: Мысли, Играй, Побеждай!"</h1>
+    <section class="sec_third">
+    <h1 class="sec_title">Мои мероприятия:</h1>
         <div class="div_info">
         <div class="card">
             <h3 class="card_title">Найди своих союзников!</h3>
