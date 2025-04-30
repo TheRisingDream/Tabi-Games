@@ -57,7 +57,7 @@ async function login(){
     display: flex;
     align-items: center;
     padding: 20px 100px 0;
-    gap: 80px;
+    gap: 60px;
     height: 100vh;
 }
 .info h1{

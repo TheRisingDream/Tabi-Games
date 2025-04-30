@@ -1,21 +1,25 @@
 <template>
-    <section class="sec_third">
+<section class="sec_third">
+    <section>
+        <FormEvent />
+    </section>
     <h1 class="sec_title">Мои мероприятия:</h1>
         <div class="div_info">
-        <div class="card">
-            <h3 class="card_title">Найди своих союзников!</h3>
-            <div class="card_img">
-            <img class="card_img" src="/public/war_chest.png">
+            <div class="card">
+                <div class="card_img">
+                    <div class="text_date">
+                    <p>month</p>
+                    <p>date</p>
+                    </div>
+                <h3 class="card_title">Найди своих союзников!</h3>
+                <div class="card_option">
+                <p class="text_option">Кол-во игроков</p>  
+                <p class="text_option">Сложность</p>   
+                </div>
+                <NuxtLink><button class="card_btn">Учавствовать</button></NuxtLink> 
+                </div>
             </div>
-            <p class="text_desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias explicabo nihil culpa voluptatem ipsa voluptates expedita quam asperiores adipisci qui, architecto earum nesciunt quo, cupiditate delectus dolore dignissimos repellendus? Ab?</p>    
-            <div class="card_option">
-            <p class="text_option">Дата проведения</p> 
-            <p class="text_option">Кол-во игроков</p>  
-            <p class="text_option">Сложность</p>  
-            </div>
-            <button class="card_btn"><NuxtLink><a>Учавствовать</a></NuxtLink></button>
-        </div>  
-    </div>
+        </div>
 </section>   
 </template>
 <style scoped>
@@ -31,13 +35,14 @@
     padding: 50px 0;
     flex-wrap: wrap;
 }
-.card{
-    display: flex;
-    flex-direction: column;
+.card{   
+    position: relative;
+    overflow: hidden;
     width: 25%;
-    text-align: center;
     border: 3px gold solid;
-    background: url("../public/second_back.jpg");
+    border-radius: 10%;
+    background-image: url("/public/war_chest.png");
+    background-size: cover;
     background-position: center;
     margin: 10px;
 }
@@ -55,17 +60,24 @@
     text-align: center;
 }
 .card_title{
-    margin: 40px;
+    padding: 40px;
     text-align: center;
     font-size: 30px;
     font-weight: 400;
 }
 .card_img{
-    width: 200px;
-    margin: auto;
+    backdrop-filter: blur(3px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
-.card_btn{
-    margin: 5px 50px;
+.text_option{
+    padding: 10px;
+}
+.card_btn{ 
+    margin: 5px;
+    padding: 12px 50px;
     font-weight: 600;
     background-color: #166aa7;
     border: none;
@@ -74,6 +86,14 @@
     cursor: pointer;
     font-size: 20px;
     text-decoration: none;
+}
+.text_date{
+    text-align: left;
+    margin: 9px 0 0 9px;
+    border-radius: 15%;
+    border: #166aa7 1px solid;
+    width: 60px;
+    text-align: center;
 }
 @media (max-width: 1200px) {
 .card{
