@@ -9,22 +9,30 @@ const password = useState('password',(()=>''));
 const retry_password = useState('retry_password',(()=>''));
 async function register(){
     if( password.value == retry_password.value ){
-    const user = await $fetch('/api/users/registration', {
-        method: "post",
-        body: {
-            email:email.value,
-            username:username.value,
-            password:password.value
-        }
-        
-    })
-        console.log("ok");   
-    if(user){
-    authStore.login(user);
-    await navigateTo('/')
-    };
-    } 
+        try {
+            const user = await $fetch('/api/users/registration', {
+                method: "post",
+                body: {
+                    email:email.value,
+                    username:username.value,
+                    password:password.value
+                }
+            });
+
+        console.log("Response from server:", user);   
+            if(user){
+                authStore.login(user);
+                await navigateTo('/')
+            } else {
+                console.error("Ошибка: пользователь не возвращен.");
+            };
+        } catch (error) {
+            console.error("Ошибка при регистрации:", error);
     }
+    } else {
+        console.error("Пароли не совпадают.");
+    }
+}
 
 </script>
 <template>
@@ -39,7 +47,7 @@ async function register(){
                 <form method='POST' @submit.prevent="register">
                     <h1>Регистрация</h1>
                     <div class="input_box">
-                        <input type="text" placeholder="Почта" v-model="email" required>
+                        <input type="email" placeholder="Почта" v-model="email" required>
                     </div>
                     <div class="input_box">
                         <input type="text" placeholder="Имя" v-model="username" required>

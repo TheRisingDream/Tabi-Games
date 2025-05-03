@@ -12,6 +12,7 @@ export default defineEventHandler(async (event) =>{
             password:body.password,        
         });
         await user.save();
+        return user;
         }   catch (e) {
                 console.error(e);
             }

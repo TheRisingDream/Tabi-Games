@@ -1,3 +1,25 @@
+<script setup>
+const game_name = useState('game_name', (()=>''));
+const place = useState('place', (()=>''));
+const difficult = useState('difficult', (()=>''));
+const date = useState('date', (()=>''));
+const link = useState('link', (()=>''));
+const experience = useState('experience', (()=>''));
+async function createEvent() {
+    const event = await $fetch('/api/event/createEvent', {
+        method: "post",
+        body: {
+            game_name:game_name.value,
+            place:place.value,
+            difficult:difficult.value,
+            date:date.value,
+            link:link.value,
+            experience:experience.value
+        }
+    })    
+    console.log("ok");  
+}
+</script>
 <template>
 <section>
     <div class="container">
@@ -6,15 +28,15 @@
             <div class="game_details">
                 <div class="input_box">
                     <span class="details">Название игры</span>
-                    <input type="text" placeholder="Введите название игры" required>
+                    <input type="text" placeholder="Введите название игры" v-model="game_name" required>
                 </div>
                 <div class="input_box">
-                    <span class="details">Количество игроков</span>
-                    <input type="text" placeholder="Введите название игры" required>
+                    <span class="details">Местоположение</span>
+                    <input type="text" placeholder="Введите где будет проходить игра" v-model="place" required>
                 </div>
                 <div class="input_box">
                     <label class="details" for="game_difficult">Сложность игры</label>
-                <select name="difficult">
+                <select name="difficult" v-model="difficult">
                     <option value="Лёгкая">Лёгкая</option>
                     <option value="Средне-лёгкая">Средне-лёгкая</option>
                     <option value="Средняя">Средняя</option>
@@ -24,17 +46,17 @@
                 </div>
                 <div class="input_box">
                     <span class="details">Дата проведения</span>
-                    <input type="text" placeholder="Введите дату проведения" required>
+                    <input type="date" placeholder="Введите дату проведения"  v-model="date" required>
                 </div>
                 <div class="input_box">
                     <span class="details">Обложка</span>
-                    <input type="text" placeholder="Вставьте ссылку на картинку" required>
+                    <input type="text" placeholder="Вставьте ссылку на картинку" v-model="link" required>
                 </div>
             </div>
             <div class="experience_detail">
-                <input type="radio" name="experience" id="dot_1">
-                <input type="radio" name="experience" id="dot_2">
-                <input type="radio" name="experience" id="dot_3">
+                <input type="radio" value="Начинающий" id="dot_1" v-model="experience">
+                <input type="radio" value="Имеющий опыт" id="dot_2" v-model="experience">
+                <input type="radio" value="Опытный" id="dot_3" v-model="experience">
                 <span class="experience_title">Опыт игрока:</span>
                 <div class="category">
                     <label for="dot_1">

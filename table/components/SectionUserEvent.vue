@@ -1,8 +1,5 @@
 <template>
-<section class="sec_third">
-    <section>
-        <FormEvent />
-    </section>
+<section>
     <h1 class="sec_title">Мои мероприятия:</h1>
         <div class="div_info">
             <div class="card">
@@ -13,7 +10,7 @@
                     </div>
                 <h3 class="card_title">Найди своих союзников!</h3>
                 <div class="card_option">
-                <p class="text_option">Кол-во игроков</p>  
+                <p class="text_option">Местоположение</p>  
                 <p class="text_option">Сложность</p>   
                 </div>
                 <NuxtLink><button class="card_btn">Учавствовать</button></NuxtLink> 
@@ -23,12 +20,6 @@
 </section>   
 </template>
 <style scoped>
-.sec_third {
-    background: url("../public/third_back.jpg");
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-}
 .div_info{
     display: flex;
     justify-content: space-around;

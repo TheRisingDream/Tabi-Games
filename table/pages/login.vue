@@ -31,7 +31,7 @@ async function login(){
                 <form method='POST' @submit.prevent="login">
                     <h1>Авторизация</h1>
                     <div class="input_box">
-                        <input type="text" placeholder="Почта" required v-model="email">
+                        <input type="email" placeholder="Почта" required v-model="email">
                     </div>
                     <div class="input_box">
                         <input type="password" placeholder="Пароль" required  v-model="password">

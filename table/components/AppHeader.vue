@@ -8,10 +8,10 @@ const header = computed(() => {
   const currentPage = route.path;
   if (currentPage === '/') {
     return 'main_page';
-  } else if (currentPage === '/login' || currentPage === '/register') {
+  } else if (currentPage === '/login' || currentPage === '/register' || currentPage ==='/event') {
     return 'login_back';
   } else {
-    return ''; // Или какое-то значение по умолчанию
+    return ''; 
   }
 });
 
@@ -21,14 +21,12 @@ const updateNickname = () => {
   if (authStore.user !== null) {
     nickname.value = authStore.user.username;
   } else {
-    nickname.value = 'Профиль'; // Можно задать значение по умолчанию
+    nickname.value = 'Профиль'; 
   }
 };
-// Вызов функции при первой загрузке
+
 updateNickname();
-// Настройка реакции на изменения маршрута
 watchEffect(() => {
-  // Обновить ник при смене страницы (при входе на другие страницы)
   updateNickname();
 });
 // let header = ref("")
