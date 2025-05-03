@@ -1,4 +1,9 @@
 <script setup>
+import { useAuthStore } from '@/stores/auth';
+
+const authStore = useAuthStore();
+
+const userId = computed(() => authStore.user._id ?? 'Нет данных о пользователе')
 const game_name = useState('game_name', (()=>''));
 const place = useState('place', (()=>''));
 const difficult = useState('difficult', (()=>''));
@@ -9,6 +14,7 @@ async function createEvent() {
     const event = await $fetch('/api/event/createEvent', {
         method: "post",
         body: {
+            id:userId.value,
             game_name:game_name.value,
             place:place.value,
             difficult:difficult.value,
@@ -24,7 +30,7 @@ async function createEvent() {
 <section>
     <div class="container">
         <div class="title">Создать меропритие</div>
-        <form action="#">
+        <form method="POST" @submit.prevent="createEvent">
             <div class="game_details">
                 <div class="input_box">
                     <span class="details">Название игры</span>

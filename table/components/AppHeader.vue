@@ -45,17 +45,18 @@ watchEffect(() => {
         <nav class="navbar">
             <a href="" class="logo">Tabi Games</a>
             <ul>
-                <li><NuxtLink to="/id_user"></NuxtLink><a>Home</a></li> 
-                <li><NuxtLink to="/messangers"></NuxtLink><a>Сообщения</a></li>
-                <li><NuxtLink to="/event"></NuxtLink><a>Мероприятия</a></li>
-                <li><NuxtLink to="/friend"></NuxtLink><a>Друзья</a></li>
-                <li><NuxtLink to="/profile"></NuxtLink><a>{{nickname}}</a></li>
+                <li><NuxtLink to="/id_user"><a>Home</a></NuxtLink></li> 
+                <li><NuxtLink to="/messangers"><a>Сообщения</a></NuxtLink></li>
+                <li><NuxtLink to="/event"><a>Мероприятия</a></NuxtLink></li>
+                <li><NuxtLink to="/friend"><a>Друзья</a></NuxtLink></li>
+                <li><NuxtLink to="/profile"><a>{{nickname}}</a></NuxtLink></li>
             </ul>
         </nav>
     </section>
 </template>
 <style scoped>
 a{
+    cursor: pointer;
     text-decoration: none;
     color: #fff;
 }
