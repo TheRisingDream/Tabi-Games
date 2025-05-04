@@ -45,7 +45,7 @@ watchEffect(() => {
         <nav class="navbar">
             <a href="" class="logo">Tabi Games</a>
             <ul>
-                <li><NuxtLink to="/id_user"><a>Home</a></NuxtLink></li> 
+                <li><NuxtLink to="/"><a>Home</a></NuxtLink></li> 
                 <li><NuxtLink to="/messangers"><a>Сообщения</a></NuxtLink></li>
                 <li><NuxtLink to="/event"><a>Мероприятия</a></NuxtLink></li>
                 <li><NuxtLink to="/friend"><a>Друзья</a></NuxtLink></li>

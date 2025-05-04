@@ -1,17 +1,26 @@
+<script setup>
+import { useAuthStore } from '@/stores/auth';
+
+const authStore = useAuthStore();
+
+const { data: posts, error } = await useFetch(`/api/event/:email`, {
+            query: { email: authStore.user.email } 
+        });
+</script>
 <template>
 <section>
     <h1 class="sec_title">Мои мероприятия:</h1>
         <div class="div_info">
-            <div class="card">
+            <div class="card" v-for="post in posts.events" :style="{ backgroundImage: 'url(' + post.link + ')' }">
                 <div class="card_img">
                     <div class="text_date">
-                    <p>month</p>
-                    <p>date</p>
+                    <p>{{ post.date }}</p>
                     </div>
-                <h3 class="card_title">Найди своих союзников!</h3>
+                <h3 class="card_title">{{ post.game_name }}</h3>
                 <div class="card_option">
-                <p class="text_option">Местоположение</p>  
-                <p class="text_option">Сложность</p>   
+                <p class="text_option">{{ post.place }}</p>  
+                <p class="text_option">Сложность: {{ post.difficult }}</p>   
+                <p class="text_option">{{ post.experience }}</p>  
                 </div>
                 <NuxtLink><button class="card_btn">Учавствовать</button></NuxtLink> 
                 </div>
@@ -32,7 +41,6 @@
     width: 25%;
     border: 3px gold solid;
     border-radius: 10%;
-    background-image: url("/public/war_chest.png");
     background-size: cover;
     background-position: center;
     margin: 10px;
