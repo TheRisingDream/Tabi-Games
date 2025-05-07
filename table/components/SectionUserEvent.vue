@@ -6,6 +6,22 @@ const authStore = useAuthStore();
 const { data: posts, error } = await useFetch(`/api/event/:email`, {
             query: { email: authStore.user.email } 
         });
+async function RemoveItem(id) {
+    const post = await $fetch(`/api/event/removeEvent`, {
+        method: 'post',
+        body: {
+            id_post: id
+        }
+    });
+    
+}
+async function UpdateItem(id) {
+    if(id){
+    authStore.setPostId(id);
+    await navigateTo('/updateEvent')
+    };
+    console.log("update ok"); 
+}
 </script>
 <template>
 <section>
@@ -22,7 +38,10 @@ const { data: posts, error } = await useFetch(`/api/event/:email`, {
                 <p class="text_option">Сложность: {{ post.difficult }}</p>   
                 <p class="text_option">{{ post.experience }}</p>  
                 </div>
-                <NuxtLink><button class="card_btn">Учавствовать</button></NuxtLink> 
+                <div class="div_btn">
+                    <button class="card_btn" @click="UpdateItem(post._id)">Изменить</button>
+                    <button class="card_btn" @click="RemoveItem(post._id)">Удалить</button>  
+                </div>
                 </div>
             </div>
         </div>
@@ -93,6 +112,12 @@ const { data: posts, error } = await useFetch(`/api/event/:email`, {
     border: #166aa7 1px solid;
     width: 60px;
     text-align: center;
+}
+.div_btn{
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 @media (max-width: 1200px) {
 .card{

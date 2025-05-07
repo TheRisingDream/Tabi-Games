@@ -5,7 +5,7 @@ const footer = computed(() => {
   const currentPage = route.path;
   if (currentPage === '/') {
     return 'sec_third';
-  } else if (currentPage === '/login' || currentPage === '/register' || currentPage ==='/event') {
+  } else if (currentPage === '/login' || currentPage === '/register' || currentPage ==='/event' || currentPage ==='/updateEvent') {
     return 'sec_third';
   } else {
     return ''; // Или какое-то значение по умолчанию

@@ -8,7 +8,7 @@ const header = computed(() => {
   const currentPage = route.path;
   if (currentPage === '/') {
     return 'main_page';
-  } else if (currentPage === '/login' || currentPage === '/register' || currentPage ==='/event') {
+  } else if (currentPage === '/login' || currentPage === '/register' || currentPage ==='/event' || currentPage ==='/updateEvent') {
     return 'login_back';
   } else {
     return ''; 
