@@ -8,7 +8,9 @@ const header = computed(() => {
   const currentPage = route.path;
   if (currentPage === '/') {
     return 'main_page';
-  } else if (currentPage === '/login' || currentPage === '/register' || currentPage ==='/event' || currentPage ==='/updateEvent') {
+    } else if (currentPage === '/login' || currentPage === '/register' 
+    || currentPage ==='/event' || currentPage ==='/updateEvent'
+    ||currentPage ==='/chat') {
     return 'login_back';
   } else {
     return ''; 
@@ -46,7 +48,7 @@ watchEffect(() => {
             <a href="" class="logo">Tabi Games</a>
             <ul>
                 <li><NuxtLink to="/"><a>Home</a></NuxtLink></li> 
-                <li><NuxtLink to="/messangers"><a>Сообщения</a></NuxtLink></li>
+                <li><NuxtLink to="/chat"><a>Сообщения</a></NuxtLink></li>
                 <li><NuxtLink to="/event"><a>Мероприятия</a></NuxtLink></li>
                 <li><NuxtLink to="/friend"><a>Друзья</a></NuxtLink></li>
                 <li><NuxtLink to="/profile"><a>{{nickname}}</a></NuxtLink></li>
