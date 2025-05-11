@@ -127,6 +127,7 @@ section{
     background-size: cover;
     background-attachment: fixed;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     height: 88vh;
     padding: 10px;

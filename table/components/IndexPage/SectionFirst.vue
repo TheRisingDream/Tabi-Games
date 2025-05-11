@@ -26,14 +26,17 @@
     flex-direction: column;
 }
 .sec_title{
+    color: #00a550;
     margin-top: 250px;
     margin-bottom: 10px;
     font-size: 50px;
     font-weight: 500;
 }
 .sec_info{
+    color: #1a4780;
     text-align: center;
-    font-size: 24px;
+    font-size: 26px;
+    font-weight: 800;
     margin-top: 0px;
     margin-bottom: 2rem;
     width: 40%;

@@ -92,6 +92,7 @@ async function UpdateItem(id) {
 }
 .text_option{
     padding: 10px;
+    font-size: 20px;
 }
 .card_btn{ 
     margin: 5px;
