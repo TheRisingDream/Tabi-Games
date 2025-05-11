@@ -1,10 +1,16 @@
+<script setup>
+definePageMeta({
+    middleware: ["auth"]
+})
+</script>
+
 <template>
     <main class="sec_third">
     <section>
-    <FormEvent />
+    <EventPageFormEvent />
     </section>
     <section>
-    <SectionUserEvent />
+    <EventPageSectionUserEvent />
     </section>    
     </main>
 </template>

@@ -1,4 +1,7 @@
 <script setup>
+definePageMeta({
+  middleware: ["auth"]
+})
 import { io } from "socket.io-client";
 import { useAuthStore } from '@/stores/auth';
 
@@ -79,30 +82,41 @@ function sendMessage (){
 
 <template>
 <section>
-  <div class="senders-list">
-    <h3>Люди, написавшие вам:</h3>
-    <ul>
-        <li v-for="sender in senders" @click="selectChat(sender)">
-            {{ sender.sender }} 
-        </li>
-    </ul>
-</div>
-    <div class="new-chat">
-      <input v-model="newUser" placeholder="Введите имя пользователя или ID" />
-      <button @click="findUser">Начать чат с новым пользователем</button>
-    </div>
-<div class="chat-window"  v-if="user">
-      <h3>Чат с {{ user }}</h3>
-      <div class="messages">
-        <div v-for="msg in messages">
-        <b>{{ msg.sender_id === auth_user._id ? 'Я' : msg.sender }}:</b> {{ msg.message }}
+<div class="senders-list">
+    <h3 class="title_chat">Чаты: </h3>
+    <div class="chat" v-for="sender in senders" @click="selectChat(sender)">
+      <div class="chat_box">
+        <p>{{ sender.sender }}</p>
       </div>
+    </div>
+</div>
+<div class="new-chat" v-if="user == null ">
+  <div class="blur">
+    <div class="input_box">
+    <input v-model="newUser" placeholder="Введите ID" />
+    </div>
+    <button @click="findUser" class="btn">Начать чат с новым пользователем</button>
+  </div>
+ 
+      
+      
+</div>
+<div v-if="user" class="chat">
+  <div class="chat-window">
+      <h3 class="title_chat">Чат с {{ user }}</h3>
+      <div class="messages">
+        <div v-for="msg in messages" class="text_chat">
+        <b>{{ msg.sender_id === auth_user._id ? authStore.user.username : msg.sender }}:</b> {{ msg.message }}
+        </div>
 
       </div>
+      <div class="input_box">
       <input v-model="newMessage" placeholder="Введите сообщение" />
-      <button @click="sendMessage">Отправить</button>
+      </div>
+      <button @click="sendMessage" class="btn">Отправить</button>
       <!-- <button @click="closeChat">Закрыть чат</button> -->
     </div>
+  </div>
 </section>
 
 </template>
@@ -113,23 +127,88 @@ section{
     background-size: cover;
     background-attachment: fixed;
     display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-around;
+    height: 88vh;
     padding: 10px;
 }
-.chat-window {
-  border: 1px solid #ccc;
+.text_chat{
+  font-size: 18px;
+  margin: 5px;
+}
+.title_chat{
+  font-size: 20px;
+  text-align: center;
+  color: #fff;
+}
+.blur{
+  border: 2px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  border-radius: 15px;
   padding: 10px;
-  width: 300px;
+}
+.new-chat{
+  display: flex;
+  align-items: center;
+}
+.input_box input{
+    width: 100%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    outline: none;
+    border-radius: 40px;
+    padding: 13px 50px 13px 20px;
+    font-size: 16px;
+    color: #fff;
+}
+.btn{
+    display: inline-block;
+    padding: 12px 50px;
+    background: #fff;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin-top: 5px;
+}
+.chat_box{
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    padding: 10px;
+    margin: 10px;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+    transition: all ease;
+}
+.chat_box:hover{
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+
+.chat-window {
+  border: 2px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  border-radius: 15px;
+  padding: 10px;
+  width: 500px;
   margin-top: 20px;
 }
-.messages {
-  height: 200px;
-  overflow-y: auto;
-  border: 1px solid #eee;
-  margin-bottom: 10px;
-  padding: 5px;
+.chat{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.senders-list{
+  border: 2px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  border-radius: 15px;
+  padding: 10px;
+  width: 300px;
 }
 .my-msg {
   background-color: #def;

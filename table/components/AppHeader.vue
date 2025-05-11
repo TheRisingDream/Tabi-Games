@@ -50,7 +50,6 @@ watchEffect(() => {
                 <li><NuxtLink to="/"><a>Home</a></NuxtLink></li> 
                 <li><NuxtLink to="/chat"><a>Сообщения</a></NuxtLink></li>
                 <li><NuxtLink to="/event"><a>Мероприятия</a></NuxtLink></li>
-                <li><NuxtLink to="/friend"><a>Друзья</a></NuxtLink></li>
                 <li><NuxtLink to="/profile"><a>{{nickname}}</a></NuxtLink></li>
             </ul>
         </nav>

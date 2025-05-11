@@ -42,6 +42,7 @@ async function updateEvent() {
         }
     })    
     console.log("update event ok");
+    authStore.setPostId("");
     await navigateTo('/event');
 }
 </script>
